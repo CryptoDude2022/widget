@@ -265,11 +265,12 @@ html, body {
 /* ================= MAPPA ================= */
 .lv-map {
   width: 100%;
-  height: 180px;
+  height: 280px;
   border: 0;
-  border-radius: 10px;
-  margin-bottom: 12px;
+  border-radius: 12px;
+  margin-bottom: 14px;
   background: #f1f5f9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* ================= BOTTONI ================= */
@@ -277,6 +278,50 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+}
+
+/* ================= PREZZI BIGLIETTI ================= */
+.lv-prices {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 8px;
+}
+
+.lv-prices-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 12px;
+}
+
+.lv-prices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.lv-price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #dcfce7;
+}
+
+.lv-price-label {
+  font-size: 12px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.lv-price-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
 }
 
 .lv-btn {
@@ -333,6 +378,14 @@ html, body {
   
   .lv-col-right {
     padding: 24px 16px 20px 16px;
+  }
+  
+  .lv-map {
+    height: 240px;
+  }
+  
+  .lv-prices-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -414,8 +467,8 @@ html, body {
   }
   
   .lv-map { 
-    height: 160px;
-    border-radius: 8px;
+    height: 200px;
+    border-radius: 10px;
   }
   
   .lv-buttons-row { 
@@ -432,6 +485,33 @@ html, body {
   .lv-schedule-section {
     margin-bottom: 20px;
     padding-bottom: 16px;
+  }
+  
+  .lv-prices {
+    padding: 12px;
+    margin-top: 6px;
+  }
+  
+  .lv-prices-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .lv-prices-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  
+  .lv-price-item {
+    padding: 8px 10px;
+  }
+  
+  .lv-price-label {
+    font-size: 11px;
+  }
+  
+  .lv-price-value {
+    font-size: 12px;
   }
 }
 
@@ -462,7 +542,16 @@ html, body {
   }
   
   .lv-map {
-    height: 140px;
+    height: 180px;
+  }
+  
+  .lv-prices-grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  
+  .lv-price-item {
+    padding: 8px 10px;
   }
 }
 
@@ -538,6 +627,19 @@ html, body {
         <div id="lv-times-return" class="lv-times"></div>
       </div>
 
+      <!-- TICKET PRICES (moved to left) -->
+      <div class="lv-prices" id="lv-prices">
+        <div class="lv-prices-title" id="lv-prices-title">💶 Prezzi biglietti</div>
+        <div class="lv-prices-grid">
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="priceBus">Biglietto Bus</span><span class="lv-price-value">€1.50</span></div>
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="priceVaporetto">Biglietto Vaporetto</span><span class="lv-price-value">€9.50</span></div>
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="pricePass1">Pass 1 giorno</span><span class="lv-price-value">€25.00</span></div>
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="pricePass2">Pass 2 giorni</span><span class="lv-price-value">€35.00</span></div>
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="pricePass3">Pass 3 giorni</span><span class="lv-price-value">€45.00</span></div>
+          <div class="lv-price-item"><span class="lv-price-label" data-i18n="pricePass7">Pass 7 giorni</span><span class="lv-price-value">€65.00</span></div>
+        </div>
+      </div>
+
     </div>
 
     <!-- RIGHT COLUMN: MAP -->
@@ -592,7 +694,14 @@ const I18N = {
     ticketBottom: "Biglietti ACTV",
     live: "LIVE – Aggiornamento in tempo reale",
     busLabel: "Bus",
-    nextBus: "Prossimo autobus"
+    nextBus: "Prossimo autobus",
+    pricesTitle: "💶 Prezzi biglietti",
+    priceBus: "Biglietto Bus",
+    priceVaporetto: "Biglietto Vaporetto",
+    pricePass1: "Pass 1 giorno",
+    pricePass2: "Pass 2 giorni",
+    pricePass3: "Pass 3 giorni",
+    pricePass7: "Pass 7 giorni"
   },
 
   en: {
@@ -614,7 +723,14 @@ const I18N = {
     ticketBottom: "ACTV Tickets",
     live: "LIVE – Real-time update",
     busLabel: "Bus line",
-    nextBus: "Next bus"
+    nextBus: "Next bus",
+    pricesTitle: "💶 Ticket prices",
+    priceBus: "Bus ticket",
+    priceVaporetto: "Vaporetto ticket",
+    pricePass1: "1-day pass",
+    pricePass2: "2-day pass",
+    pricePass3: "3-day pass",
+    pricePass7: "7-day pass"
   }
 };
 
@@ -1004,7 +1120,7 @@ function minutes(t){
 
 function nextTimes(list,now){
   if(!Array.isArray(list)) return [];
-  return list.filter(t=>minutes(t)>=now).slice(0,5);
+  return list.filter(t=>minutes(t)>=now).slice(0,6);
 }
 
 function dayType(d){ const x=d.getDay(); return x===0?"sunday":x===6?"saturday":"weekday"; }
@@ -1137,8 +1253,8 @@ function renderWidget(){
   }
 
   // Filtra prossime partenze
-  const nextOut = combinedOut.filter(item => minutes(item.time) >= nowMin).slice(0,5);
-  const nextRet = combinedRet.filter(item => minutes(item.time) >= nowMin).slice(0,5);
+  const nextOut = combinedOut.filter(item => minutes(item.time) >= nowMin).slice(0,6);
+  const nextRet = combinedRet.filter(item => minutes(item.time) >= nowMin).slice(0,6);
 
   if(nextOut.length===0){
     outBox.innerHTML=`<span class="lv-pill">${L.noMoreToday}</span>`;
@@ -1193,6 +1309,15 @@ function renderWidget(){
   /* BOTTONE BIGLIETTI */
   document.getElementById("lv-ticket-btn").innerText=L.ticketBtn;
   document.getElementById("lv-bottom-ticket-btn").innerText=L.ticketBottom;
+
+  /* PREZZI BIGLIETTI */
+  const pricesTitle = document.getElementById("lv-prices-title");
+  if(pricesTitle) pricesTitle.innerText = L.pricesTitle;
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(L[key]) el.innerText = L[key];
+  });
 }
 
 /* EVENTI */
